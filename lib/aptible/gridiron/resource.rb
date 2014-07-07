@@ -18,5 +18,7 @@ require 'aptible/gridiron/protocol'
 require 'aptible/gridiron/requirement'
 require 'aptible/gridiron/procedure'
 require 'aptible/gridiron/criterion'
+
+require 'aptible/gridiron/evidence'
 require 'aptible/gridiron/document'
 require 'aptible/gridiron/event'

@@ -1,6 +1,10 @@
 require 'aptible/auth'
 require 'gem_config'
 
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'criterion', 'criteria'
+end
+
 module Aptible
   module Gridiron
     include GemConfig::Base
