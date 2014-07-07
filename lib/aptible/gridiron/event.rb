@@ -1,6 +1,6 @@
 module Aptible
   module Gridiron
-    class Event < Resource
+    class Event < Evidence
     end
   end
 end

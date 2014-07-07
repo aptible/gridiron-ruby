@@ -25,10 +25,17 @@ token = Aptible::Auth::Token.create(email: 'user0@example.com', password: 'passw
 From here, you can interact with the Gridiron server however you wish:
 
 ```ruby
-gridiron = Aptible::Gridiron.new(token: token)
+gridiron = Aptible::Gridiron::Agent.new(token: token)
 protocol = gridiron.protocols.first
 protocol.procedures.count
 # => 356
+procedure = protocol.procedures.first
+# => "Obtain and review IT acquisition policy and procedures..."
+procedure.criteria.count
+# => 1
+criterion = procedure.criteria.first
+criterion.name
+# => "Policy Manual"
 ```
 
 ## Configuration
