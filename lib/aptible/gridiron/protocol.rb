@@ -7,7 +7,7 @@ module Aptible
 
       field :id
       field :version
-      field :published_at, type: DateTime
+      field :published_at, type: Time
     end
   end
 end
