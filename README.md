@@ -38,11 +38,33 @@ criterion.name
 # => "Policy Manual"
 ```
 
+To work with organization-specific evidence (i.e., documents and events), you may set the `Aptible::Gridiron.configuration.organization` variable. For example:
+
+```ruby
+organization = Aptible::Auth::Organization.all(token: token).first
+Aptible::Gridiron.configure do |config|
+  config.organization = organization
+end
+
+gridiron = Aptible::Gridiron::Agent.new(token: token)
+criterion = gridiron.protocols.first.procedures.first.criteria.first
+criterion.documents.count
+# => 1
+document = criterion.create_document!(
+  print_version: 'http://knowyourmeme.com/photos/11296-success'
+)
+document.print_version.href
+# => "http://knowyourmeme.com/photos/11296-success"
+document.expires_at
+# => 2015-07-08 00:10:31 UTC
+```
+
 ## Configuration
 
 | Parameter | Description | Default |
 | --------- | ----------- | --------------- |
 | `root_url` | Root URL of the Gridiron server | `ENV['GRIDIRON_ROOT_URL']` or [https://gridiron.aptible.com](https://gridiron.aptible.com) |
+| `organization` | `Aptible::Auth::Organization` instance to be used for all documents/events | `nil` |
 
 To point the client at a different server (e.g., during development), add the following to your application's initializers (or set the `GRIDIRON_ROOT_URL` environment variable):
 

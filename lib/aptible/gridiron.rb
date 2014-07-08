@@ -13,6 +13,9 @@ module Aptible
       has :root_url,
           classes: [String],
           default: ENV['GRIDIRON_ROOT_URL'] || 'https://gridiron.aptible.com'
+      has :organization,
+          classes: [Aptible::Auth::Organization, NilClass],
+          default: nil
     end
   end
 end
