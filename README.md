@@ -1,6 +1,6 @@
 # ![](https://raw.github.com/aptible/straptible/master/lib/straptible/rails/templates/public.api/icon-60px.png) Aptible::Gridiron
 
-[![Gem Version](https://badge.fury.io/rb/gridiron.png)](https://rubygems.org/gems/gridiron)
+[![Gem Version](https://badge.fury.io/rb/aptible-gridiron.png)](https://rubygems.org/gems/aptible-gridiron)
 [![Build Status](https://travis-ci.org/aptible/gridiron-ruby.png?branch=master)](https://travis-ci.org/aptible/gridiron-ruby)
 [![Dependency Status](https://gemnasium.com/aptible/gridiron-ruby.png)](https://gemnasium.com/aptible/gridiron-ruby)
 
