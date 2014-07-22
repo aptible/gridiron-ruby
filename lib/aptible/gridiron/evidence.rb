@@ -5,6 +5,7 @@ module Aptible
 
       field :id
       field :data
+      field :created_at, type: Time
 
       def organization
         auth = Aptible::Auth::Organization.new(token: token, headers: headers)
