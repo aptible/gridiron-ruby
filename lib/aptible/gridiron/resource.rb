@@ -3,21 +3,24 @@ require 'aptible/resource'
 module Aptible
   module Gridiron
     class Resource < Aptible::Resource::Base
-      def self.normalize_params(params = {})
-        # TODO: Figure out a more natural solution than this monkey patch
-        if (organization = Aptible::Gridiron.configuration.organization)
-          params.merge!(organization: organization.href)
-        end
-
-        super(params)
+      def outgoing_uri_filter(params)
+        params.merge!(organization: organization) if organization
       end
 
-      def outgoing_uri_filter(params)
-        if (organization = Aptible::Gridiron.configuration.organization)
-          params.merge!(organization: organization.href)
+      def organization
+        # TODO: Is there another way to persist organization across children
+        headers['X-Aptible-Organization']
+      end
+
+      def initialize(options = {})
+        if options.is_a?(Hash) && options[:organization]
+          options[:headers] ||= {}
+          options[:headers].merge!(
+            'X-Aptible-Organization' => options[:organization].href
+          )
         end
 
-        params
+        super(options)
       end
 
       def namespace
