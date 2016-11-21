@@ -15,9 +15,8 @@ module Aptible
       def initialize(options = {})
         if options.is_a?(Hash) && options[:organization]
           options[:headers] ||= {}
-          options[:headers].merge!(
-            'X-Aptible-Organization' => options[:organization].href
-          )
+          organization_href = options[:organization].href
+          options[:headers]['X-Aptible-Organization'] = organization_href
         end
 
         super(options)
@@ -34,11 +33,14 @@ module Aptible
   end
 end
 
+require 'aptible/gridiron/organization_profile'
+require 'aptible/gridiron/membership_notification'
+require 'aptible/gridiron/policy_manual'
 require 'aptible/gridiron/protocol'
 require 'aptible/gridiron/requirement'
+require 'aptible/gridiron/risk_assessment'
 require 'aptible/gridiron/procedure'
 require 'aptible/gridiron/criterion'
-
 require 'aptible/gridiron/evidence'
 require 'aptible/gridiron/document'
 require 'aptible/gridiron/event'
