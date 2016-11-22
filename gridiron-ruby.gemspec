@@ -16,11 +16,11 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($RS)
-  spec.test_files    = spec.files.grep(/^spec\//)
+  spec.test_files    = spec.files.grep(%r{^spec\/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'aptible-resource', '>= 0.2.1'
-  spec.add_dependency 'aptible-auth', '>= 0.5.0'
+  spec.add_dependency 'aptible-resource', '>= 0.3.7'
+  spec.add_dependency 'aptible-auth', '>= 0.11.10'
   spec.add_dependency 'gem_config'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
